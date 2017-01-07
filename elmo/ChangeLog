@@ -9,6 +9,8 @@
 	(elmo-list-delete-if-smaller): remove (was not used).
 	(elmo-delete-if): grammar fix in docstring.
 	(elmo-delete-if): simplify.
+	(elmo-string-match-member): simplify with DOLIST.
+	(elmo-string-matched-member): ditto.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 

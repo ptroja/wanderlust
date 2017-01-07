@@ -1317,18 +1317,16 @@ ELT must be a string.  Upper-case and lower-case letters are treated as equal."
 (defun elmo-string-match-member (str list &optional case-ignore)
   (let ((case-fold-search case-ignore))
     (catch 'member
-      (while list
-	(if (string-match (car list) str)
-	    (throw 'member (car list)))
-	(setq list (cdr list))))))
+      (dolist (element list)
+	(when (string-match element str)
+          (throw 'member element))))))
 
 (defun elmo-string-matched-member (str list &optional case-ignore)
   (let ((case-fold-search case-ignore))
     (catch 'member
-      (while list
-	(if (string-match str (car list))
-	    (throw 'member (car list)))
-	(setq list (cdr list))))))
+      (dolist (element list)
+	(when (string-match str element)
+          (throw 'member element))))))
 
 (defsubst elmo-string-delete-match (string pos)
   (concat (substring string
