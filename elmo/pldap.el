@@ -701,7 +701,7 @@ entry according to the value of WITHDN."
       (while (and (not (eobp))
 		  (re-search-forward "^$" nil t)) ; empty line is a delimiter.
 	(if verbose
-	    (message "Parsing ldap results...%d" (setq i (+ i 1))))
+	    (message "Parsing ldap results...%d" (setq i (1+ i))))
 	(save-excursion
 	  (save-restriction
 	    (narrow-to-region start (point))

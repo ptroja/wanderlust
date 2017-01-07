@@ -181,7 +181,7 @@
  			(while (setq curc
  				     (wl-thread-entity-get-children curp))
  			  (setq curp (wl-thread-get-entity
- 				      (nth (- (length curc) 1)
+ 				      (nth (1- (length curc))
  					   curc))))
  			(wl-thread-entity-get-number curp)))
     (wl-thread-entity-set-children to (wl-append children (list (car entity))))
@@ -926,7 +926,7 @@ Message is inserted to the summary buffer."
 				      (point))
     (backward-char)	;; needed for mouse-face.
     (delete-region beg (point))
-    (wl-thread-insert-entity (- depth 1)
+    (wl-thread-insert-entity (1- depth)
 			     entity
 			     (wl-thread-get-entity
 			      (wl-thread-entity-get-parent entity))
@@ -950,7 +950,7 @@ Message is inserted to the summary buffer."
     (setq depth (wl-thread-get-depth-of-current-line))
     (delete-region (point-at-bol) (point-at-eol))
     (wl-thread-entity-set-opened entity t)
-    (wl-thread-insert-entity depth ;(- depth 1)
+    (wl-thread-insert-entity depth ;(1- depth)
 			     entity
 			     (wl-thread-get-entity
 			      (wl-thread-entity-get-parent entity))
@@ -1029,7 +1029,7 @@ Message is inserted to the summary buffer."
   (let ((cur entity)
 	(ret-val "")
 	(space-str (wl-repeat-string wl-thread-space-str-internal
-				     (- wl-thread-indent-level-internal 1)))
+				     (1- wl-thread-indent-level-internal)))
 	parent)
     (when (wl-thread-entity-get-number
 	   (setq parent (wl-thread-entity-get-parent-entity cur)))
@@ -1039,7 +1039,7 @@ Message is inserted to the summary buffer."
       (setq ret-val (concat ret-val
 			    (wl-repeat-string
 			     wl-thread-horizontal-str-internal
-			     (- wl-thread-indent-level-internal 1))))
+			     (1- wl-thread-indent-level-internal))))
       (setq cur parent)
       (while (wl-thread-entity-get-number
 	      (wl-thread-entity-get-parent-entity cur))

@@ -724,7 +724,7 @@ Returns non-nil if bottom of message."
       (with-current-buffer summary
 	(if (and number
 		 (numberp count)
-		 (>= (setq count (- count 1)) 0)
+		 (>= (setq count (1- count)) 0)
 		 (string= (elmo-folder-name-internal folder)
 			  (wl-summary-buffer-folder-name)))
 	    (let* ((wl-mime-charset      charset)

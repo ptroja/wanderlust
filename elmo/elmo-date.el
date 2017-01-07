@@ -168,12 +168,12 @@ Otherwise treat \\ in NEWTEXT string as special:
 				     "elmo-weekday-name-%s"
 				     elmo-lang))))
 	y1 days p)
-    (setq y1 (- year 1))
+    (setq y1 (1- year))
     (setq days (- (+ (* y1 365) (/ y1 400) (/ y1 4)) (/ y1 100)))
     (setq p 1)
     (while (< p month)
       (setq days (+ days (timezone-last-day-of-month p year)))
-      (setq p (+ p 1)))
+      (setq p (1+ p)))
     (setq days (+ days mday))
     (aref wday (% days 7))))
 

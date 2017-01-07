@@ -1794,9 +1794,9 @@ Return nil if no complete line has arrived."
     (list 'acl acl mailbox)))
 
 (defun elmo-imap4-parse-flag-list ()
-  (let ((str (buffer-substring (+ (point) 1)
+  (let ((str (buffer-substring (1+ (point))
                                (progn (search-forward ")" nil t)
-                                      (- (point) 1)))))
+                                      (1- (point))))))
     (unless (zerop (length str))
       (split-string str))))
 
@@ -2045,7 +2045,7 @@ Return nil if no complete line has arrived."
                          "(uidnext messages)"))
                   'status))
     (cons
-     (- (elmo-imap4-response-value status 'uidnext) 1)
+     (1- (elmo-imap4-response-value status 'uidnext))
      (elmo-imap4-response-value status 'messages))))
 
 (defun elmo-imap4-folder-list-range (folder min max)

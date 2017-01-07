@@ -557,7 +557,7 @@ Return value is a cons cell of (STRUCTURE . REST)"
 (defun elmo-concat-path (path filename)
   (if (not (string= path ""))
       (elmo-replace-in-string
-       (if (string= elmo-path-sep (substring path (- (length path) 1)))
+       (if (string= elmo-path-sep (substring path (1- (length path))))
 	   (concat path filename)
 	 (concat path elmo-path-sep filename))
        (concat (regexp-quote elmo-path-sep)(regexp-quote elmo-path-sep))
@@ -939,9 +939,9 @@ Emacs 19.28 or earlier does not have `unintern'."
 	;; also good.
 	(min
 	 (let ((i 1))
-	   (while (< (- i 1) hashsize)
+	   (while (< (1- i) hashsize)
 	     (setq i (* 2 i)))
-	   (- i 1))
+	   (1- i))
 	 elmo-hash-maximum-size)
 	elmo-hash-minimum-size)
      elmo-hash-minimum-size)
@@ -1037,7 +1037,7 @@ Emacs 19.28 or earlier does not have `unintern'."
     (while (string-match " " filename)
       (setq tmp (substring filename
 			   (match-beginning 0)
-			   (+ (match-end 0) 1)))
+			   (1+ (match-end 0))))
       (if (string= tmp "  ")
 	  (setq tmp " ")
 	(setq tmp (car (rassoc tmp
@@ -1046,7 +1046,7 @@ Emacs 19.28 or earlier does not have `unintern'."
 	    (concat result
 		    (substring filename 0 (match-beginning 0))
 		    tmp))
-      (setq filename (substring filename (+ (match-end 0) 1))))
+      (setq filename (substring filename (1+ (match-end 0)))))
     (concat result filename)))
 
 (defsubst elmo-copy-file (src dst &optional ok-if-already-exists)
@@ -2007,7 +2007,7 @@ KBYTES is a number specifying size in kilo bytes."
 	(setq cur-file (expand-file-name (car (cdr oldest)) (car oldest)))
 	(setq cur-size (/ (elmo-disk-usage cur-file) Kbytes))
 	(when (elmo-file-cache-delete cur-file)
-	  (setq count (+ count 1))
+	  (setq count (1+ count))
 	  (message "%d cache(s) are expired." count))
 	(setq deleted (+ deleted cur-size))
 	(setq total (- total cur-size)))

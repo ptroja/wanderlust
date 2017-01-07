@@ -106,7 +106,7 @@ CLASS, LOCATION, NODE-ID, PARENT are set to the returned entity."
 					       node-id
 					       num
 					       entity))))
-	(setq num (+ num 1))
+	(setq num (1+ num))
 	(setq bodystructure (cdr bodystructure)))
       (mime-entity-set-children-internal entity children)
       (mime-entity-set-content-type-internal

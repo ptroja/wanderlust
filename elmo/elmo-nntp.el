@@ -706,7 +706,7 @@ Don't cache if nil.")
       (setq beg-num (car numbers)
 	    cur beg-num
 	    end-num (nth (1- (length numbers)) numbers)
-	    length  (+ (- end-num beg-num) 1))
+	    length  (1+ (- end-num beg-num)))
       (elmo-with-progress-display (elmo-retrieve-overview length)
 	  "Getting overview"
 	(while (<= cur end-num)
@@ -736,7 +736,7 @@ Don't cache if nil.")
 		(error "Fetching overview failed")))
 	  (setq cur (+ elmo-nntp-overview-fetch-chop-length cur 1))
 	  (elmo-progress-notify 'elmo-retrieve-overview
-				:set (+ (- (min cur end-num) beg-num) 1)))))
+				:set (1+ (- (min cur end-num) beg-num))))))
     (if (not use-xover)
 	(setq new-msgdb (elmo-nntp-msgdb-create-by-header
 			 session numbers flag-table))

@@ -593,7 +593,7 @@ Optional argument ARG is repeart count."
 		 entity)))
       (if (not is-group)
 	  ;; delete itself from path
-	  (setq path (delete (nth (- (length path) 1) path) path)))
+	  (setq path (delete (nth (1- (length path)) path) path)))
       (goto-char (point-min))
       (catch 'done
 	(while path

@@ -190,7 +190,7 @@
 
 (luna-define-method elmo-message-folder ((folder elmo-multi-folder)
 					 number)
-  (nth (- (/ number (elmo-multi-folder-divide-number-internal folder)) 1)
+  (nth (1- (/ number (elmo-multi-folder-divide-number-internal folder)))
        (elmo-multi-folder-children-internal folder)))
 
 (luna-define-method elmo-message-cached-p ((folder elmo-multi-folder) number)
@@ -237,7 +237,7 @@
 	  (cur-number 0)
 	  match)
       (while children
-	(setq cur-number (+ cur-number 1))
+	(setq cur-number (1+ cur-number))
 	(when (setq match (elmo-message-entity (car children) key))
 	  (setq match (elmo-message-copy-entity match))
 	  (elmo-message-entity-set-number
@@ -355,7 +355,7 @@
 	 (max 0)
 	 list numbers base)
     (while flds
-      (setq cur-number (+ cur-number 1)
+      (setq cur-number (1+ cur-number)
 	    list (elmo-folder-list-messages (car flds) visible-only in-msgdb)
 	    max (apply 'max max list)
 	    base (* (elmo-multi-folder-divide-number-internal folder)

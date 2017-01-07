@@ -950,7 +950,7 @@ that `read' can handle, whenever this is possible."
 		       "No matching %%( parenthesis in summary line format"))
 		    (goto-char (car entry)) ; start
 		    (setq form (buffer-substring (nth 1 entry) ; start-content
-						 (- (match-beginning 0) 1)))
+						 (1- (match-beginning 0))))
 		    (delete-region (car entry) (match-end 0))
 		    (insert "s")
 		    (setq specs

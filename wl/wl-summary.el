@@ -3162,7 +3162,7 @@ Return non-nil if the mark is updated"
 	    (move-to-column wl-summary-buffer-persistent-mark-column)
 	    (let ((inhibit-read-only t)
 		  (buffer-read-only nil)
-		  (mark (buffer-substring (- (point) 1) (point)))
+		  (mark (buffer-substring (1- (point)) (point)))
 		  (new-mark (wl-summary-persistent-mark number status)))
 	      (prog1
 		  (unless (string= new-mark mark)
@@ -3596,7 +3596,7 @@ Return non-nil if the mark is updated"
     (setq line (funcall wl-summary-buffer-line-formatter))
     (if wl-summary-width (setq line
 			       (wl-set-string-width
-				(- wl-summary-width 1) line nil
+				(1- wl-summary-width) line nil
 				'ignore-invalid)))
     (setq line (concat line
 		       "\r"

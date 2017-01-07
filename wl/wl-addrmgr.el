@@ -530,7 +530,7 @@ Return nil if no ADDRESS exists."
 				  wl-addrmgr-list)
 	    wl-addrmgr-list (cons entry wl-addrmgr-list))
       (wl-addrmgr-redraw))
-    (forward-line (- lines 1))
+    (forward-line (1- lines))
     (message "Modified `%s'." (wl-string (car entry)))))
 
 ;;; local address book implementation.
