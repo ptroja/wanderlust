@@ -860,8 +860,8 @@ the directory becomes empty after deletion."
   "Return a list from L2 in which each element is a member of L1."
   (let (result)
     (dolist (element l2)
-      (if (memq element l1)
-	(setq result (cons element result))))
+      (when (memq element l1)
+	(push element result)))
     (nreverse result)))
 
 (defsubst elmo-list-delete-if-smaller (list number)
