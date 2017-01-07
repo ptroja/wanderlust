@@ -11,6 +11,7 @@
 	(elmo-delete-if): simplify.
 	(elmo-string-match-member): simplify with DOLIST.
 	(elmo-string-matched-member): ditto.
+	(elmo-get-message-id-from-header): simplify.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
