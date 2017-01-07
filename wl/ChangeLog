@@ -1,6 +1,9 @@
 2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
 	* wl-thread.el (wl-thread-resume-entity): cleanup.
+	(wl-thread-save-list): refactored from a repeated code of
+	wl-save-entities and wl-save-top-list.
+	(wl-thread-save-entity): use new routine wl-thread-save-list.
 
 	* wl-summary.el (wl-summary-load-file-object): cleanup.
 

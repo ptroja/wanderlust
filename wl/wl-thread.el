@@ -109,29 +109,18 @@
 	    (setq msgs (wl-pop msgs-stack)))))
       (setq entity (wl-thread-get-entity (car msgs))))))
 
+(defun wl-thread-save-list (object file dir)
+  (let ((filename (expand-file-name file dir)))
+    (when (file-writable-p filename)
+      (let (print-length)
+        (with-temp-buffer
+          (prin1 object (current-buffer))
+          (princ "\n" (current-buffer))
+          (write-region (point-min) (point-max) filename nil 'no-msg))))))
+
 (defun wl-thread-save-entity (dir)
-  (wl-thread-save-entities dir)
-  (wl-thread-save-top-list dir))
-
-(defun wl-thread-save-top-list (dir)
-  (let ((top-file (expand-file-name wl-thread-entity-list-file dir))
-	(entity wl-thread-entity-list)
-	print-length)
-    (with-temp-buffer
-      (when (file-writable-p top-file)
-	(prin1 entity (current-buffer))
-	(princ "\n" (current-buffer))
-	(write-region (point-min) (point-max) top-file nil 'no-msg)))))
-
-(defun wl-thread-save-entities (dir)
-  (let ((top-file (expand-file-name wl-thread-entity-file dir))
-	(entities wl-thread-entities)
-	print-length print-level)
-    (with-temp-buffer
-      (when (file-writable-p top-file)
-	(prin1 entities (current-buffer))
-	(princ "\n" (current-buffer))
-	(write-region (point-min) (point-max) top-file nil 'no-msg)))))
+  (wl-thread-save-list wl-thread-entity-list wl-thread-entity-list-file dir)
+  (wl-thread-save-list wl-thread-entities wl-thread-entity-file dir))
 
 (defsubst wl-thread-entity-get-number (entity)
   (nth 0 entity))
