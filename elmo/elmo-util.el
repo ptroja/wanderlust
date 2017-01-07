@@ -206,8 +206,7 @@ with FILENAME which defaults to `buffer-file-name'."
 (defun elmo-object-load (filename &optional mime-charset no-err)
   "Load OBJECT from the file specified by FILENAME.
 File content is decoded with MIME-CHARSET."
-  (if (not (file-readable-p filename))
-      nil
+  (when (file-readable-p filename)
     (with-temp-buffer
       (insert-file-contents-as-binary filename)
       (let ((coding-system (or (elmo-set-auto-coding)
@@ -569,15 +568,14 @@ Return value is a cons cell of (STRUCTURE . REST)"
 (defun elmo-passwd-alist-load ()
   (let ((filename (expand-file-name elmo-passwd-alist-file-name
 				    elmo-msgdb-directory)))
-    (if (not (file-readable-p filename))
-	()
+    (when (file-readable-p filename)
       (with-temp-buffer
 	(let (insert-file-contents-pre-hook ; To avoid autoconv-xmas...
 	      insert-file-contents-post-hook)
 	  (insert-file-contents filename)
 	  (goto-char (point-min))
 	  (ignore-errors
-	   (read (current-buffer))))))))
+            (read (current-buffer))))))))
 
 (defun elmo-passwd-alist-clear ()
   "Clear password cache."

@@ -1,3 +1,8 @@
+2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
+
+	* elmo-util.el (elmo-object-load): simplify.
+	(elmo-passwd-alist-load): simplify; reindent.
+
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
 	* elmo-file.el (elmo-file-detect-content-type): rewrite LET
