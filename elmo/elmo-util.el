@@ -832,12 +832,9 @@ Return value is a cons cell of (STRUCTURE . REST)"
 (defun elmo-delete-directory (path &optional no-hierarchy)
   "Delete directory recursively."
   (when (stringp path) ; nil is not permitted.
-    (let ((dirent (directory-files path))
-          relpath abspath hierarchy)
-      (while dirent
-        (setq relpath (car dirent)
-              dirent (cdr dirent)
-              abspath (expand-file-name relpath path))
+    (let (abspath hierarchy)
+      (dolist (relpath (directory-files path))
+        (setq abspath (expand-file-name relpath path))
         (when (not (string-match "^\\.\\.?$" relpath))
           (if (eq (nth 0 (file-attributes abspath)) t)
               (if no-hierarchy

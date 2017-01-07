@@ -4,6 +4,7 @@
 	(elmo-passwd-alist-load): simplify; reindent.
 	(elmo-make-directory): simplify.
 	(elmo-delete-directory): change IF to WHEN; reindent.
+	(elmo-delete-directory): simplify with DOLIST.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
