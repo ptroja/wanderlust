@@ -864,14 +864,6 @@ the directory becomes empty after deletion."
 	(push element result)))
     (nreverse result)))
 
-(defsubst elmo-list-delete-if-smaller (list number)
-  (let ((ret-val (copy-sequence list)))
-    (while list
-      (if (< (car list) number)
-	  (setq ret-val (delq (car list) ret-val)))
-      (setq list (cdr list)))
-    ret-val))
-
 (defun elmo-list-diff (list1 list2)
   (if (equal list1 list2)
       (list nil nil)

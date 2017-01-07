@@ -6,6 +6,7 @@
 	(elmo-delete-directory): change IF to WHEN; reindent.
 	(elmo-delete-directory): simplify with DOLIST.
 	(elmo-list-filter): simplify.
+	(elmo-list-delete-if-smaller): remove (was not used).
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
