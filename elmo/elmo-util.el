@@ -823,8 +823,8 @@ Return value is a cons cell of (STRUCTURE . REST)"
 (defun elmo-make-directory (path &optional mode)
   "Create directory recursively."
   (let ((parent (directory-file-name (file-name-directory path))))
-    (if (null (file-directory-p parent))
-	(elmo-make-directory parent))
+    (unless (file-directory-p parent)
+      (elmo-make-directory parent))
     (make-directory path)
     (set-file-modes path (or mode
 			     (+ (* 64 7) (* 8 0) 0))))) ; chmod 0700
