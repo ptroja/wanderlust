@@ -2224,17 +2224,15 @@ If ARG, without confirm."
     (wl-summary-rescan nil nil nil t)))
 
 (defun wl-summary-load-file-object (filename)
-  "Load lisp object from dir."
-  (with-temp-buffer
-    (let (insert-file-contents-pre-hook	; To avoid autoconv-xmas...
-	  insert-file-contents-post-hook
-	  ret-val)
-      (if (not (file-readable-p filename))
-	  ()
-	(as-binary-input-file (insert-file-contents filename))
-	(condition-case nil
-	    (read (current-buffer))
-	  (error (error "Reading failed")))))))
+  "Load lisp object from FILENAME."
+  (when (file-readable-p filename)
+    (with-temp-buffer
+      (let (insert-file-contents-pre-hook	; To avoid autoconv-xmas...
+            insert-file-contents-post-hook)
+        (as-binary-input-file (insert-file-contents filename))
+        (condition-case nil
+            (read (current-buffer))
+          (error (error "Reading failed")))))))
 
 (defun wl-summary-goto-folder (&optional arg)
   (interactive "P")

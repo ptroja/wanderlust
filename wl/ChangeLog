@@ -1,3 +1,7 @@
+2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
+
+	* wl-summary.el (wl-summary-load-file-object): cleanup.
+
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
 	* wl-mime.el (wl-mime-pgp-decrypt-region): fix grammar in message
