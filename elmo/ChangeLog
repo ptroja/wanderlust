@@ -8,6 +8,7 @@
 	(elmo-list-filter): simplify.
 	(elmo-list-delete-if-smaller): remove (was not used).
 	(elmo-delete-if): grammar fix in docstring.
+	(elmo-delete-if): simplify.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 

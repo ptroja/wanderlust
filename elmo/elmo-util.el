@@ -1053,10 +1053,9 @@ Emacs 19.28 or earlier does not have `unintern'."
 (defun elmo-delete-if (pred lst)
   "Return new list containing items which don't satisfy PRED in LST."
   (let (result)
-    (while lst
-      (unless (funcall pred (car lst))
-	(setq result (cons (car lst) result)))
-      (setq lst (cdr lst)))
+    (dolist (elt lst)
+      (unless (funcall pred elt)
+	(push elt result)))
     (nreverse result)))
 
 (defun elmo-list-delete (list1 list2 &optional delete-function)
