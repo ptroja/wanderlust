@@ -1,5 +1,7 @@
 2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
+	* wl-thread.el (wl-thread-resume-entity): cleanup.
+
 	* wl-summary.el (wl-summary-load-file-object): cleanup.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>

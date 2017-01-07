@@ -52,24 +52,19 @@
 ;;;;;; each entity is (number opened-or-not children parent) ;;;;;;;
 
 (defun wl-thread-resume-entity (fld)
-  (let (entities top-list)
-    (setq entities (wl-summary-load-file-object
-		    (expand-file-name wl-thread-entity-file
-				      (elmo-folder-msgdb-path fld))))
-    (setq top-list
-	  (wl-summary-load-file-object
-	   (expand-file-name wl-thread-entity-list-file
-			     (elmo-folder-msgdb-path fld))))
+  (let* ((msgdb-path (elmo-folder-msgdb-path fld))
+         (entities (wl-summary-load-file-object
+                    (expand-file-name wl-thread-entity-file msgdb-path)))
+         (top-list (wl-summary-load-file-object
+                    (expand-file-name wl-thread-entity-list-file msgdb-path))))
     (message "Resuming thread structure...")
-    ;; set obarray value.
-    (setq wl-thread-entity-hashtb (elmo-make-hash (* (length entities) 2)))
-    ;; set buffer local variables.
-    (setq wl-thread-entities entities)
-    (setq wl-thread-entity-list top-list)
-    (while entities
-      (elmo-set-hash-val (format "#%d" (car (car entities))) (car entities)
-			 wl-thread-entity-hashtb)
-      (setq entities (cdr entities)))
+    ;; set buffer-local variables
+    (setq wl-thread-entity-hashtb (elmo-make-hash (* (length entities) 2))
+          wl-thread-entities entities
+          wl-thread-entity-list top-list)
+    (dolist (entity entities)
+      (elmo-set-hash-val (format "#%d" (car entity)) entity
+			 wl-thread-entity-hashtb))
     (wl-thread-make-number-list)
     (message "Resuming thread structure...done")))
 
