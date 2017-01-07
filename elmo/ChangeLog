@@ -3,6 +3,7 @@
 	* elmo-util.el (elmo-object-load): simplify.
 	(elmo-passwd-alist-load): simplify; reindent.
 	(elmo-make-directory): simplify.
+	(elmo-delete-directory): change IF to WHEN; reindent.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 

@@ -831,21 +831,21 @@ Return value is a cons cell of (STRUCTURE . REST)"
 
 (defun elmo-delete-directory (path &optional no-hierarchy)
   "Delete directory recursively."
-  (if (stringp path) ; nil is not permitted.
-  (let ((dirent (directory-files path))
-	relpath abspath hierarchy)
-    (while dirent
-      (setq relpath (car dirent)
-	    dirent (cdr dirent)
-	    abspath (expand-file-name relpath path))
-      (when (not (string-match "^\\.\\.?$" relpath))
-	(if (eq (nth 0 (file-attributes abspath)) t)
-	    (if no-hierarchy
-		(setq hierarchy t)
-	      (elmo-delete-directory abspath no-hierarchy))
-	  (delete-file abspath))))
-    (unless hierarchy
-      (delete-directory path)))))
+  (when (stringp path) ; nil is not permitted.
+    (let ((dirent (directory-files path))
+          relpath abspath hierarchy)
+      (while dirent
+        (setq relpath (car dirent)
+              dirent (cdr dirent)
+              abspath (expand-file-name relpath path))
+        (when (not (string-match "^\\.\\.?$" relpath))
+          (if (eq (nth 0 (file-attributes abspath)) t)
+              (if no-hierarchy
+                  (setq hierarchy t)
+                (elmo-delete-directory abspath no-hierarchy))
+            (delete-file abspath))))
+      (unless hierarchy
+        (delete-directory path)))))
 
 (defun elmo-delete-match-files (path regexp &optional remove-if-empty)
   "Delete directory files specified by PATH.
