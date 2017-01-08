@@ -2962,7 +2962,7 @@ Commands with the key binding that begins with @kbd{t} executes commands
 on the messages in the thread.
 @xref{Key Bindings of Summary}.
 
-@subsection reconstruct thread by hand
+@subsection Reconstruct thread by hand
 
 You can reconstruct the thread manually.  In Summary, @kbd{M-w}
 (@code{wl-summary-save-current-message}) at the corresponding message,
@@ -3253,7 +3253,7 @@ example.
 @end group
 @end lisp
 
-@subsection on the format for sender name
+@subsection On the format for sender name
 
 The format string @samp{%f} displays the return value of the function specified
 by @code{wl-summary-from-function}. If you use the function
@@ -7206,7 +7206,7 @@ To use @code{wl-spam}, write in @file{~/.wl} as follows:
 @end group
 @end lisp
 
-@subsection spam mark
+@subsection Spam mark
 
 The spam mark (@samp{s}) will be provided as new temporary mark.
 Messages marked by this will be refiled into @code{wl-spam-folder} when
@@ -7216,7 +7216,7 @@ summary walking in ordinary way.
 The spam mark is be put on by spam judgement described later, or by
 invoking @kbd{k m} at any time.
 
-@subsection spam judgment
+@subsection Spam judgment
 
 You can judge spam messages by following ways:
 
@@ -7276,7 +7276,7 @@ Example follows:
 @end lisp
 @end enumerate
 
-@subsection spam learning
+@subsection Spam learning
 
 @code{wl-spam} automatically learn spam with refiling messages.
 
