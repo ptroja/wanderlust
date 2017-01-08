@@ -3260,7 +3260,7 @@ by @code{wl-summary-from-function}. If you use the function
 @code{wl-summary-default-from} (default), it displays sender name ordinarily,
 while displays the recipient names if the folder name matches with
 @code{wl-summary-showto-folder-regexp} and the sender is yourself.
-If the value of @code{wl-use-petname} is Non-nil, it uses petname to display.
+If the value of @code{wl-use-petname} is non-nil, it uses petname to display.
 
 For example, to display recipient names for the message in @samp{+backup} if
 its sender is yourself, set up as follows.
@@ -5100,7 +5100,7 @@ Refer to the following URL about POP-before-SMTP.
 Cites the content of the current message buffer (the part under cursor).
 If the region is active, cites the region (it affects only if
 @code{transient-mark-mode} (on GNU Emacs) or @code{zmacs-regions}
-(on XEmacs) is Non-nil). If the command is called with prefix argument,
+(on XEmacs) is non-nil). If the command is called with prefix argument,
 the text inserted by yank command (the text content of clipboard) is cited.
 (@code{wl-draft-yank-original})
 
