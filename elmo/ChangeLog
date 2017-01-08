@@ -12,6 +12,15 @@
 	(elmo-string-match-member): simplify with DOLIST.
 	(elmo-string-matched-member): ditto.
 	(elmo-get-message-id-from-header): simplify.
+	(elmo-string-match-assoc): simplify.
+	(elmo-string-matched-assoc): ditto.
+	(elmo-string-assoc): ditto.
+	(elmo-string-assoc-all): ditto.
+	(elmo-string-assoc-all): ditto.
+	(elmo-string-rassoc): ditto.
+	(elmo-string-rassoc-all): ditto.
+	(elmo-make-number-list): ditto.
+	(elmo-number-set-to-number-list): ditto.
 
 2016-12-18  Piotr Trojanek  <piotr.trojanek@gmail.com>
 

@@ -1336,69 +1336,51 @@ ELT must be a string.  Upper-case and lower-case letters are treated as equal."
 		     (length string))))
 
 (defun elmo-string-match-assoc (key alist &optional case-ignore)
-  (let ((case-fold-search case-ignore)
-	a)
+  (let ((case-fold-search case-ignore))
     (catch 'loop
-      (while alist
-	(setq a (car alist))
-	(if (and (consp a)
-		 (stringp (car a))
-		 (string-match key (car a)))
-	    (throw 'loop a))
-	(setq alist (cdr alist))))))
+      (dolist (a alist)
+	(when (and (consp a)
+                   (stringp (car a))
+                   (string-match key (car a)))
+          (throw 'loop a))))))
 
 (defun elmo-string-matched-assoc (key alist &optional case-ignore)
-  (let ((case-fold-search case-ignore)
-	a)
+  (let ((case-fold-search case-ignore))
     (catch 'loop
-      (while alist
-	(setq a (car alist))
-	(if (and (consp a)
-		 (stringp (car a))
-		 (string-match (car a) key))
-	    (throw 'loop a))
-	(setq alist (cdr alist))))))
+      (dolist (a alist)
+	(when (and (consp a)
+                   (stringp (car a))
+                   (string-match (car a) key))
+          (throw 'loop a))))))
 
 (defun elmo-string-assoc (key alist)
-  (let (a)
-    (catch 'loop
-      (while alist
-	(setq a (car alist))
-	(if (and (consp a)
-		 (stringp (car a))
-		 (string= key (car a)))
-	    (throw 'loop a))
-	(setq alist (cdr alist))))))
+  (catch 'loop
+    (dolist (a alist)
+      (when (and (consp a)
+                 (stringp (car a))
+                 (string= key (car a)))
+        (throw 'loop a)))))
 
 (defun elmo-string-assoc-all (key alist)
   (let (matches)
-    (while alist
-      (if (string= key (car (car alist)))
-	  (setq matches
-		(cons (car alist)
-		      matches)))
-      (setq alist (cdr alist)))
+    (dolist (a alist)
+      (when (string= key (car a))
+        (push a matches)))
     matches))
 
 (defun elmo-string-rassoc (key alist)
-  (let (a)
-    (catch 'loop
-      (while alist
-	(setq a (car alist))
-	(if (and (consp a)
+  (catch 'loop
+    (dolist (a alist)
+      (when (and (consp a)
 		 (stringp (cdr a))
 		 (string= key (cdr a)))
-	    (throw 'loop a))
-	(setq alist (cdr alist))))))
+        (throw 'loop a)))))
 
 (defun elmo-string-rassoc-all (key alist)
   (let (matches)
-    (while alist
-      (if (string= key (cdr (car alist)))
-	  (setq matches
-		(cons (car alist)
-		      matches)))
-      (setq alist (cdr alist)))
+    (dolist (a alist)
+      (when (string= key (cdr a))
+        (push a matches)))
     matches))
 
 (defun elmo-expand-newtext (newtext original)
@@ -1690,25 +1672,22 @@ NUMBER-SET is altered."
     (cdr top)))
 
 (defun elmo-make-number-list (beg end)
-  (let (number-list i)
-    (setq i end)
+  (let (number-list
+        (i end))
     (while (>= i beg)
-      (setq number-list (cons i number-list))
+      (push i number-list)
       (setq i (1- i)))
     number-list))
 
 (defun elmo-number-set-to-number-list (number-set)
   "Return a number list which corresponds to NUMBER-SET."
-  (let ((number-list (list 'dummy))
-	elem)
-    (while number-set
-      (setq elem (car number-set))
+  (let ((number-list (list 'dummy)))
+    (dolist (elem number-set)
       (cond
        ((consp elem)
 	(nconc number-list (elmo-make-number-list (car elem) (cdr elem))))
        ((integerp elem)
-	(nconc number-list (list elem))))
-      (setq number-set (cdr number-set)))
+	(nconc number-list (list elem)))))
     (cdr number-list)))
 
 (defcustom elmo-list-subdirectories-ignore-regexp "^\\(\\.\\.?\\|[0-9]+\\)$"
