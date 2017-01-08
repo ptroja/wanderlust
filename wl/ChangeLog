@@ -1,3 +1,8 @@
+2017-01-08  Piotr Trojanek  <piotr.trojanek@gmail.com>
+
+	* wl-util.el (wl-biff-notify): optimize tests for running biff
+	notify/unnotify hooks.
+
 2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
 	* wl-thread.el (wl-thread-resume-entity): cleanup.
