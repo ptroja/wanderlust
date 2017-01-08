@@ -2,6 +2,13 @@
 
 	* wl-util.el (wl-biff-notify): optimize tests for running biff
 	notify/unnotify hooks.
+	(wl-window-end): compatibility wrapper for old Emacsen.
+
+	* wl-summary.el (wl-summary-update-mark-and-highlight-window):
+	use wl-window-end.
+	(wl-summary-update-mark-window): ditto.
+
+	* wl-highlight.el (wl-highlight-summary-window): ditto.
 
 2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
 

@@ -1218,6 +1218,13 @@ that `read' can handle, whenever this is possible."
 		  prompt)))
     (read-buffer prompt def require-match)))
 
+;; old emacsen doesn't support 2nd arg
+(static-if (> (car (subr-arity (symbol-function 'window-end)))
+              1)
+    (defalias 'wl-window-end 'window-end)
+  (defun wl-window-end (&optional window update)
+    (window-end window)))
+
 (require 'product)
 (product-provide (provide 'wl-util) (require 'wl-version))
 
