@@ -2975,33 +2975,32 @@ message then you have the reconstructed thread.
 
 @subsection Cache File
 
-The messages which have to access via network (e.x. IMAP, NNTP folder)
-are cached as a local file so as to save network traffic or to enable
-off-line operation.  The cache file is saved under the directory
+The messages which have to be accessed via network (e.x. IMAP, NNTP folder)
+are cached as local files to save network traffic and to enable
+off-line operation.  The cache files are saved under the directory
 @file{~/.elmo/cache}.  To expire cache, type @kbd{M-x
 elmo-cache-expire-by-size}.  The command deletes cache files to the
 specified size by the order of last accessed time.
 
 @subsection Buffer Cache and Prefetching
 
-The messages that are read are kept in the cache buffer so as to make
+The messages that are read are kept in the cache buffer to make
 the behavior fast when you are to read the message again.  It is called
 `buffer cache'. The number of cache buffer is specified by
 @code{wl-message-buffer-cache-size}.
 
-There are message prefetching mechanism in the Wanderlust that
+There is message prefetching mechanism in the Wanderlust that
 prefetches next message while you are reading.
 
-You can control the message prefetching mechanism by these two
-variables.
+You can control the message prefetching mechanism by these variables.
 
 @table @code
 @item wl-message-buffer-prefetch-folder-type-list
 @vindex wl-message-buffer-prefetch-folder-type-list
 The initial setting is @code{'(imap4 nntp)}.  If it is a list of folder
 types, it specifies the folder types in which message prefetching is
-enabled. In initial setting, messages are prefetch only in the nntp and
-imap4 folders. In this case, multi folder that contains localdir and 
+enabled. In initial setting, messages are prefetched only in the nntp and
+imap4 folders. In this case, multi folder that contains localdir and
 imap4 prefetches only imap4 messages. This variable precedes the value of
 @code{wl-message-buffer-prefetch-folder-list}.
 To prefetch messages in all folder types, specify @code{t}.
@@ -3138,7 +3137,7 @@ To execute auto refile on all messages, set following.
 @cindex Summary, Sticky
 @cindex Sticky Summary
 
-The buffer of the `sticky summary' does not killed by typing @kbd{q}.
+The buffer of the `sticky summary' does not get killed by typing @kbd{q}.
 
 By entering the summary by typing @kbd{Shift RET} in Folder mode or
 @kbd{G} in some summary sticky summary buffer is created.
