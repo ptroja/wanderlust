@@ -1,3 +1,8 @@
+2017-01-08  Piotr Trojanek  <piotr.trojanek@gmail.com>
+
+	* elmo-msgdb.el (elmo-msgdb-number-add): remove (unused).
+	(elmo-msgdb-mark-append): ditto.
+
 2017-01-07  Piotr Trojanek  <piotr.trojanek@gmail.com>
 
 	* elmo-util.el (elmo-object-load): simplify.

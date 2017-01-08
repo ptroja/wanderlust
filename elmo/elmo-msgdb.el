@@ -187,15 +187,6 @@ VALUE is the field value."
     ;; list is nil
     (list element)))
 
-;;
-;; number <-> Message-ID handling
-;;
-(defsubst elmo-msgdb-number-add (alist number id)
-  (let ((ret-val alist))
-    (setq ret-val
-	  (elmo-msgdb-append-element ret-val (cons number id)))
-    ret-val))
-
 ;;; flag table
 ;;
 (defvar elmo-flag-table-filename "flag-table")
@@ -248,14 +239,6 @@ VALUE is the field value."
 				      list)))
 		   flag-table)
 	 list))))
-;;;
-;; persistent mark handling
-;; (for each folder)
-
-(defun elmo-msgdb-mark-append (alist id mark)
-  "Append mark."
-  (setq alist (elmo-msgdb-append-element alist
-					 (list id mark))))
 
 (defun elmo-msgdb-flag-table (msgdb &optional flag-table)
   ;; Make a table of msgid flag (read, answered)
